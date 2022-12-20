@@ -1,0 +1,30 @@
+package com.codewitheshan.blog.services.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.codewitheshan.blog.entities.Comment;
+import com.codewitheshan.blog.payloads.CommentDto;
+import com.codewitheshan.blog.repositories.PostRepo;
+import com.codewitheshan.blog.services.CommentService;
+
+public class CommentServiceImpl implements CommentService {
+	
+	@Autowired
+	private PostRepo postRepo;
+	
+	@Autowired
+	private Comment commentRepo;
+
+	@Override
+	public CommentDto createComment(CommentDto CommentDto, Integer postId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void deleteComment(Integer commentId) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

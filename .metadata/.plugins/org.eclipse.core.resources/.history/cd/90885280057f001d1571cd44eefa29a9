@@ -1,0 +1,10 @@
+package com.codewitheshan.blog.payloads;
+
+import lombok.Setter;
+
+@Setter
+public class JwtAuthResponse {
+	
+	private String token;
+	
+}

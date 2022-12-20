@@ -1,0 +1,5 @@
+package com.codewitheshan.blog.security;
+
+public class JwtAuthenticationFilter {
+
+}

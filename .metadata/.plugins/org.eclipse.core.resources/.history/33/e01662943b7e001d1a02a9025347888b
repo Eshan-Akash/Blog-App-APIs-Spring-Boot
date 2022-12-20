@@ -1,0 +1,7 @@
+package com.codewitheshan.blog.security;
+
+public class JwtAuthResponse {
+	
+	private String token;
+	
+}
