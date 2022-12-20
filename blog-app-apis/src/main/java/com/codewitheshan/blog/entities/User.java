@@ -7,9 +7,9 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-//import org.springframework.security.core.GrantedAuthority;
-//import org.springframework.security.core.authority.SimpleGrantedAuthority;
-//import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -32,8 +32,8 @@ import lombok.Setter;
 @NoArgsConstructor		// will generate a constructor with no parameters
 @Getter	// you can annotate any field with @getter & @setter, to let lombok generate the default getter/setter automatically 
 @Setter
-public class User{
-//public class User implements UserDetails{
+//public class User{
+public class User implements UserDetails{
 	// we need id, name, email, password, about
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO) //making id as primary key, make it auto increment 
@@ -48,46 +48,45 @@ public class User{
 	
 	private String about;
 	
-//	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//	private List<Post> posts = new ArrayList<>();
-//	
-//	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinTable(name = "user_role",
-//	joinColumns = @JoinColumn(name="user", referencedColumnName = "id"),
-//	inverseJoinColumns = @JoinColumn(name="role", referencedColumnName = "id")
-//			)
-//	private Set<Role> rolees = new HashSet<>();
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Post> posts = new ArrayList<>();
+	
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinTable(name = "user_role",
+	joinColumns = @JoinColumn(name="user", referencedColumnName = "id"),
+	inverseJoinColumns = @JoinColumn(name="role", referencedColumnName = "id"))
+	private Set<Role> rolees = new HashSet<>();
 
-//	@Override
-//	public Collection<? extends GrantedAuthority> getAuthorities() {
-//		// we will take each role and change it into granted authority 
-//		List<SimpleGrantedAuthority> authorities = this.rolees.stream().map((role)-> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
-//		return authorities;
-//	}
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		// we will take each role and change it into granted authority 
+		List<SimpleGrantedAuthority> authorities = this.rolees.stream().map((role)-> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
+		return authorities;
+	}
 
-//	@Override
-//	public String getUsername() {
-//		return this.email;	// make it true 
-//	}
-//
-//	@Override
-//	public boolean isAccountNonExpired() {
-//		return true;	// make it true
-//	}
-//
-//	@Override
-//	public boolean isAccountNonLocked() {
-//		return true;	// make it true
-//	}
-//
-//	@Override
-//	public boolean isCredentialsNonExpired() {
-//		return true;	// make it true
-//	}
-//
-//	@Override
-//	public boolean isEnabled() {
-//		return true; // make it true 
-//	}
+	@Override
+	public String getUsername() {
+		return this.email;	// make it true 
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		return true;	// make it true
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		return true;	// make it true
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return true;	// make it true
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return true; // make it true 
+	}
 	
 }

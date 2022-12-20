@@ -7,7 +7,6 @@
     <fullyQualifiedTypeName name="java.util.Optional"/>
     <fullyQualifiedTypeName name="com.codewitheshan.blog.repositories.UserRepo"/>
     <fullyQualifiedTypeName name="com.codewitheshan.blog.exceptions.ResourceNotFoundException"/>
-    <fullyQualifiedTypeName name="com.codewitheshan.blog.entities.User"/>
     <fullyQualifiedTypeName name="org.springframework.security.core.authority.SimpleGrantedAuthority"/>
     <fullyQualifiedTypeName name="java.util.stream.Collectors"/>
     <fullyQualifiedTypeName name="com.codewitheshan.blog.security.CustomUserDetailService"/>
@@ -24,7 +23,6 @@
     <fullyQualifiedTypeName name="java.sql.Date"/>
     <fullyQualifiedTypeName name="io.jsonwebtoken.Claims"/>
     <fullyQualifiedTypeName name="io.jsonwebtoken.Jwts"/>
-    <fullyQualifiedTypeName name="org.springframework.security.core.userdetails.UserDetails"/>
     <fullyQualifiedTypeName name="java.util.Map"/>
     <fullyQualifiedTypeName name="java.util.HashMap"/>
     <fullyQualifiedTypeName name="io.jsonwebtoken.SignatureAlgorithm"/>
@@ -60,4 +58,6 @@
     <fullyQualifiedTypeName name="org.apache.tomcat.util.net.openssl.ciphers.Authentication"/>
     <fullyQualifiedTypeName name="javax.naming.AuthenticationException"/>
     <fullyQualifiedTypeName name="lombok.Data"/>
+    <fullyQualifiedTypeName name="org.springframework.security.core.userdetails.UserDetails"/>
+    <fullyQualifiedTypeName name="com.codewitheshan.blog.entities.User"/>
 </qualifiedTypeNameHistroy>

@@ -11,6 +11,6 @@ import com.codewitheshan.blog.entities.User;
 // should not annotate with @service 
 public interface UserRepo extends JpaRepository<User, Integer>{
 	// we are creating email as a user 
-//	Optional<User> findByEmail(String email);
+	Optional<User> findByEmail(String email);
 	
 }
