@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="jakarta.persistence.JoinTable"/>
-    <fullyQualifiedTypeName name="jakarta.persistence.JoinColumn"/>
-    <fullyQualifiedTypeName name="jakarta.persistence.CascadeType"/>
     <fullyQualifiedTypeName name="jakarta.persistence.FetchType"/>
     <fullyQualifiedTypeName name="java.util.Optional"/>
     <fullyQualifiedTypeName name="com.codewitheshan.blog.repositories.UserRepo"/>
@@ -12,7 +9,6 @@
     <fullyQualifiedTypeName name="com.codewitheshan.blog.security.CustomUserDetailService"/>
     <fullyQualifiedTypeName name="org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder"/>
     <fullyQualifiedTypeName name="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
-    <fullyQualifiedTypeName name="org.springframework.context.annotation.Bean"/>
     <fullyQualifiedTypeName name="org.springframework.boot.CommandLineRunner"/>
     <fullyQualifiedTypeName name="org.springframework.security.crypto.password.PasswordEncoder"/>
     <fullyQualifiedTypeName name="java.lang.StringIndexOutOfBoundsException"/>
@@ -60,4 +56,8 @@
     <fullyQualifiedTypeName name="lombok.Data"/>
     <fullyQualifiedTypeName name="org.springframework.security.core.userdetails.UserDetails"/>
     <fullyQualifiedTypeName name="com.codewitheshan.blog.entities.User"/>
+    <fullyQualifiedTypeName name="org.springframework.context.annotation.Bean"/>
+    <fullyQualifiedTypeName name="org.springframework.security.config.annotation.web.configuration.EnableWebSecurity"/>
+    <fullyQualifiedTypeName name="org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration"/>
+    <fullyQualifiedTypeName name="org.springframework.http.HttpMethod"/>
 </qualifiedTypeNameHistroy>

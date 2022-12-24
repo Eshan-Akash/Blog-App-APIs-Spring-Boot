@@ -5,8 +5,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -14,35 +15,27 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import com.codewitheshan.blog.security.CustomUserDetailService;
-//import com.codewitheshan.blog.security.JwtAuthenticationEntryPoint;
-//import com.codewitheshan.blog.security.JwtAuthenticationFilter;
+import com.codewitheshan.blog.security.JwtAuthenticationEntryPoint;
+import com.codewitheshan.blog.security.JwtAuthenticationFilter;
 
 // we are using new version 
 // we can configure without override
 @Configuration
+@EnableWebSecurity
 public class SecurityConfig {
 	
 	@Autowired
 	private CustomUserDetailService customUserDetailService;
 	
-//	@Autowired
-//	private JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
+	@Autowired
+	private JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
 	
-//	@Autowired
-//	private JwtAuthenticationFilter jwtAuthenticationFilter;
+	@Autowired
+	private JwtAuthenticationFilter jwtAuthenticationFilter;
 	
 	// we can declare a bean for security filter chain 
 	@Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-		http
-		.csrf()
-		.disable()
-		.authorizeHttpRequests()
-		.anyRequest()
-		.authenticated()
-		.and()
-		.httpBasic();
-
 //		http
 //		.csrf()
 //		.disable()
@@ -50,12 +43,23 @@ public class SecurityConfig {
 //		.anyRequest()
 //		.authenticated()
 //		.and()
-//		.exceptionHandling().authenticationEntryPoint(this.jwtAuthenticationEntryPoint)
-//		.and()
-//		.sessionManagement()
-//		.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-		
-//		http.addFilterBefore(this.jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+//		.httpBasic();
+
+		http
+		.csrf()
+		.disable()
+		.authorizeHttpRequests()
+		.antMatchers("/api/v1/auth/login").permitAll()
+		.anyRequest()
+		.authenticated()
+		.and()
+		.exceptionHandling()
+		.authenticationEntryPoint(this.jwtAuthenticationEntryPoint)
+		.and()
+		.sessionManagement()
+		.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+
+		http.addFilterBefore(this.jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 		
 		return http.build();
     }
@@ -76,16 +80,14 @@ public class SecurityConfig {
 		return new BCryptPasswordEncoder();
 	}
 	
-//	@Bean
-//	public AuthenticationManager authenticationManagerBean() throws Exception{
+//	// donot use bean 
+//	public AuthenticationManager authenticationManagerBean() throws Exception {
 //		return this.authenticationManagerBean();
 //	}
-	
-//	@Bean
-//	public interface AuthenticationManager {
-//
-//		  Authentication authenticate(Authentication authentication)
-//		    throws AuthenticationException;
-//		}
+		@Bean
+		public AuthenticationManager authenticationManagerBean(AuthenticationConfiguration configuration) throws Exception {
+			return configuration.getAuthenticationManager();
+		}
+
 	
 }

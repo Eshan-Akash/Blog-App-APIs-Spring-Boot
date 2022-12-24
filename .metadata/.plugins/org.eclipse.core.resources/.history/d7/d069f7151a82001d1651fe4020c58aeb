@@ -1,0 +1,13 @@
+package com.codewitheshan.blog.payloads;
+
+import lombok.Data;
+
+@Data
+public class JwtAuthRequest {
+	// this will be email 
+	private String username;
+	// this will be password
+	private String password;
+	
+	
+}
